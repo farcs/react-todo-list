@@ -46,7 +46,17 @@ class App extends Component {
     })
   }
   handleEdit = (id) => {
-    console.log(`handleEdit ${id}`)
+    // filter selected item from the todo list
+    const filteredItems = this.state.items.filter((item) => item.id !== id)
+    // also get the selected item itself
+    const selectedItem = this.state.items.find((item) => item.id === id)
+    // now update the list and load the selected item into the input control
+    this.setState({
+      items: filteredItems,
+      id: selectedItem.id,
+      item: selectedItem.title,
+      editItem: true,
+    })
   }
   render() {
     // console.log(this.state)
